@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="knockoutRound.cpp" />
     <ClCompile Include="league.cpp" />
+    <ClCompile Include="match.cpp" />
     <ClCompile Include="simulations.cpp" />
     <ClCompile Include="team.cpp" />
     <ClCompile Include="tournament.cpp" />
@@ -146,7 +148,10 @@
     <None Include="world_rankings.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="knockoutRound.h" />
     <ClInclude Include="league.h" />
+    <ClInclude Include="match.h" />
+    <ClInclude Include="simulations.h" />
     <ClInclude Include="team.h" />
     <ClInclude Include="tournament.h" />
     <ClInclude Include="xmlParser.h" />
@@ -164,6 +169,9 @@
     <Xml Include="oceania_knockout_round.xml" />
     <Xml Include="oceania_group_a.xml" />
     <Xml Include="oceania_group_b.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

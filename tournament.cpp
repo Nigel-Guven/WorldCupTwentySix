@@ -8,13 +8,13 @@ Tournament::Tournament(League& league) : league(league) {}
 void Tournament::runRoundRobin() {
 
     int numTeams = league.getTeams().size();
-
+    /*
     for (int i = 0; i < numTeams; ++i) {
         for (int j = i + 1; j < numTeams; ++j) {
             league.simulateGroupMatch(i, j);
             league.simulateGroupMatch(j, i);
         }
-    }
+    }*/
 
     league.sortTeams();
     

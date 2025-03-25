@@ -35,7 +35,6 @@ void Team::displayStats() const {
 }
 
 std::string Team::getName() const {
-    std::cout << name << std::endl;
     return name;
 }
 
