@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>New Zealand</name>
+    <points>41</points>
+  </team>
+  <team>
+    <name>Tahiti</name>
+    <points>33</points>
+  </team>
+  <team>
+    <name>Vanuatu</name>
+    <points>18</points>
+  </team>
+</teams>

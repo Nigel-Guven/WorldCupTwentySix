@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\Africa">
       <UniqueIdentifier>{c26ab367-099b-4361-85bb-27912bfe6037}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Oceania">
+      <UniqueIdentifier>{f1301109-0d54-4fa3-988d-8b2f9b14fdb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WorldCupTwentySix.cpp">
@@ -88,6 +91,12 @@
     </Xml>
     <Xml Include="africa_group_i.xml">
       <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="oceania_group_a.xml">
+      <Filter>Resource Files\Oceania</Filter>
+    </Xml>
+    <Xml Include="oceania_group_b.xml">
+      <Filter>Resource Files\Oceania</Filter>
     </Xml>
   </ItemGroup>
 </Project>

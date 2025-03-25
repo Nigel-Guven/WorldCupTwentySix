@@ -2,9 +2,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include "Tournament.h"  // Assuming Tournament class is in this file
 
 using namespace std;
 
+// Constructor definition (only in the .cpp file)
 XMLParser::XMLParser(const string& filename) : filename(filename) {}
 
 string XMLParser::extractValue(const string& xmlLine, const string& tagName) {
@@ -18,10 +21,11 @@ string XMLParser::extractValue(const string& xmlLine, const string& tagName) {
     return xmlLine.substr(startPos, endPos - startPos);
 }
 
+// Other methods' definitions follow as usual
 std::vector<Team> XMLParser::parseXML() {
     ifstream file(filename);  // Open the XML file
     if (!file) {
-        cout << "Error: Could not open file!" << endl;
+        cerr << "Error: Could not open file: " << filename << endl;
         return {};  // Return an empty vector in case of an error
     }
 
@@ -31,6 +35,12 @@ std::vector<Team> XMLParser::parseXML() {
     std::vector<Team> teams;  // Vector to store the teams
 
     while (getline(file, line)) {
+        // Trim line before processing (optional, depends on XML format)
+        line = trim(line);
+
+        // Skip empty lines or lines that don't contain relevant data
+        if (line.empty()) continue;
+
         // Search for <team> element, i.e. start of a new team
         if (line.find("<team>") != string::npos) {
             insideTeam = true;
@@ -49,7 +59,17 @@ std::vector<Team> XMLParser::parseXML() {
 
         // If we've found both the team name and points, store the team in the vector
         if (!teamName.empty() && !teamPoints.empty()) {
-            teams.push_back(Team(teamName, stoi(teamPoints)));  // Create a Team object and add it to the vector
+            try {
+                teams.push_back(Team(teamName, stoi(teamPoints)));  // Create a Team object and add it to the vector
+            }
+            catch (const std::invalid_argument& e) {
+                cerr << "Invalid points format for team " << teamName << ": " << teamPoints << endl;
+                cerr << "Exception: " << e.what() << endl;  // Log the exception message
+            }
+            catch (const std::out_of_range& e) {
+                cerr << "Points value out of range for team " << teamName << ": " << teamPoints << endl;
+                cerr << "Exception: " << e.what() << endl;  // Log the exception message
+            }
             insideTeam = false;  // Reset for the next team
             teamName.clear();
             teamPoints.clear();
@@ -58,4 +78,11 @@ std::vector<Team> XMLParser::parseXML() {
 
     file.close();  // Close the file
     return teams;  // Return the list of teams
+}
+
+string XMLParser::trim(const string& str) {
+    const auto start = str.find_first_not_of(" \t\r\n");
+    if (start == string::npos) return "";  // No non-whitespace characters
+    const auto end = str.find_last_not_of(" \t\r\n");
+    return str.substr(start, end - start + 1);
 }

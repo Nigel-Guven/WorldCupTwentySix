@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>New Caledonia</name>
+    <points>41</points>
+  </team>
+  <team>
+    <name>Fiji</name>
+    <points>33</points>
+  </team>
+  <team>
+    <name>Solomon Islands</name>
+    <points>18</points>
+  </team>
+  <team>
+    <name>Papua New Guinea</name>
+    <points>14</points>
+  </team>
+</teams>

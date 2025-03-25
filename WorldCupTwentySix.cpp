@@ -7,22 +7,77 @@
 #include "League.h"
 #include "Tournament.h"
 
-int main() {
+void processGroup(const std::string& fileName);
 
-    XMLParser parser("south_america.xml");
+int main() {
+    
+    //Generate Random Seed
+
     std::srand(std::time(0));
 
-    std::vector<Team> teams = parser.parseXML();
+    /*
+        South America
+    */ 
+    
+    std::cout << "Starting South America Tournament...\n";
+    processGroup("south_america.xml");
+    
 
-    League southAmericanLeague;
-
-    for (const auto& team : teams) {
-        southAmericanLeague.addTeam(team);
+    /*
+        Africa
+    */
+    const std::vector<std::string> africaGroups = {
+        "africa_group_a.xml",
+        "africa_group_b.xml",
+        "africa_group_c.xml",
+        "africa_group_d.xml",
+        "africa_group_e.xml",
+        "africa_group_f.xml",
+        "africa_group_g.xml",
+        "africa_group_h.xml",
+        "africa_group_i.xml"
+    };
+    
+    for (const auto& group : africaGroups) {
+        std::cout << "Starting Tournament for " << group << "...\n";
+        processGroup(group);
     }
 
-    Tournament tournament(southAmericanLeague);
-    tournament.runRoundRobin();
+    /*
+        Europe
+    */
 
+    /*
+        North America
+    */
+
+    /*
+        Oceania
+    */
+
+
+
+    /*
+        Asia
+    */
 
     return 0;
+}
+
+void processGroup(const std::string& fileName) {
+    XMLParser parser(fileName);
+    std::vector<Team> teams = parser.parseXML();
+
+    if (teams.empty()) {
+        std::cout << "No teams parsed from " << fileName << std::endl;
+        return;
+    }
+
+    League league;
+    for (const auto& team : teams) {
+        league.addTeam(team);
+    }
+
+    Tournament tournament(league);
+    tournament.runRoundRobin();
 }

@@ -25,7 +25,7 @@ void Tournament::runRoundRobin() {
     for (int i = 0; i < topTeamsCount; ++i) {
         league.getTeams()[i].getName();  // Display stats of the top team
     }*/
-    
+    std::cout << "\n\n";
     league.displayLeagueTable();
 
     /*

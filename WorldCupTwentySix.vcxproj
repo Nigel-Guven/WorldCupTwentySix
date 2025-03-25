@@ -160,6 +160,8 @@
     <Xml Include="africa_group_g.xml" />
     <Xml Include="africa_group_h.xml" />
     <Xml Include="africa_group_i.xml" />
+    <Xml Include="oceania_group_a.xml" />
+    <Xml Include="oceania_group_b.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

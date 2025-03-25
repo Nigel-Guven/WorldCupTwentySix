@@ -2,17 +2,24 @@
 #define XMLPARSER_H
 
 #include <vector>
-#include "Team.h"
 #include <string>
+#include "Team.h"  // Make sure Team.h is included here
 
 class XMLParser {
 public:
-    XMLParser(const std::string& filename);  // Constructor to initialize the file name
-    std::vector<Team> parseXML();  // Method to parse the XML and return a list of teams
+    // Constructor declaration (only here in the header)
+    XMLParser(const std::string& filename);  // Don't define it here, just declare it
+
+    // Method declaration
+    std::vector<Team> parseXML();
 
 private:
-    std::string filename;  // File name for the XML file
-    std::string extractValue(const std::string& xmlLine, const std::string& tagName);  // Helper method to extract tag values
+    // Other private members and methods
+    std::string extractValue(const std::string& xmlLine, const std::string& tagName);
+    std::string trim(const std::string& str);
+
+    std::string filename;
 };
+
 
 #endif // XMLPARSER_H
