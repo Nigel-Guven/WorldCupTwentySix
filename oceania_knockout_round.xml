@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Cook Islands</name>
+    <points>5</points>
+  </team>
+  <team>
+    <name>Tonga</name>
+    <points>3</points>
+  </team>
+  <team>
+    <name>American Samoa</name>
+    <points>5</points>
+  </team>
+  <team>
+    <name>Samoa</name>
+    <points>4</points>
+  </team>
+</teams>

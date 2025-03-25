@@ -3,6 +3,7 @@
 #include <ctime>
 #include <algorithm>
 #include "League.h"
+#include "xmlParser.h"
 
 League::League() {}
 
@@ -19,7 +20,160 @@ void League::sortTeams() {
         });
 }
 
-void League::simulateMatch(int team1Index, int team2Index) {
+Team League::processKnockoutFromXMLFile(const std::string& fileName) {
+    XMLParser parser(fileName);
+    std::vector<Team> teams = parser.parseXML();
+
+    League league;
+    for (const auto& team : teams) {
+        league.addTeam(team);
+    }
+
+    // Simulate the knockout rounds
+    int round = 1;
+    while (league.getTeams().size() > 1) {
+        std::cout << "Starting Knockout Round " << round << "...\n";
+        std::vector<int> winners;
+
+        // Simulate matches between pairs of teams
+        for (size_t i = 0; i < league.getTeams().size(); i += 2) {
+
+            std::cout << "Fixture: " << league.getTeamByIndex(i).getName() << " v " << league.getTeamByIndex(i + 1).getName() << "...\n";
+
+            int winner = league.simulateKnockoutMatch(i, i + 1);
+            winners.push_back(winner);
+        }
+
+        // Prepare for the next round with the winners
+        std::vector<Team> nextRoundTeams;
+        for (int winnerIndex : winners) {
+            nextRoundTeams.push_back(league.getTeams()[winnerIndex]);
+        }
+
+        league = League(); // Reset the league and add winners
+        for (const auto& team : nextRoundTeams) {
+            league.addTeam(team);
+        }
+
+        round++;
+    }
+
+    // Return the final winner
+    return league.getTeams()[0];
+}
+
+Team League::processKnockoutFromLeague(League league) {
+
+    // Simulate the knockout rounds
+    int round = 1;
+    while (league.getTeams().size() > 1) {
+        std::cout << "Starting Knockout Round " << round << "...\n";
+        std::vector<int> winners;
+
+        // Simulate matches between pairs of teams
+        for (size_t i = 0; i < league.getTeams().size(); i += 2) {
+
+            std::cout << "Fixture: " << league.getTeamByIndex(i).getName() << " v " << league.getTeamByIndex(i + 1).getName() << "...\n";
+
+            int winner = league.simulateKnockoutMatch(i, i + 1);
+            winners.push_back(winner);
+        }
+
+        // Prepare for the next round with the winners
+        std::vector<Team> nextRoundTeams;
+        for (int winnerIndex : winners) {
+            nextRoundTeams.push_back(league.getTeams()[winnerIndex]);
+        }
+
+        league = League(); // Reset the league and add winners
+        for (const auto& team : nextRoundTeams) {
+            league.addTeam(team);
+        }
+
+        round++;
+    }
+
+    std::cout << "Winner: " << league.getTeams()[0].getName() << "...\n";
+    // Return the final winner
+    return league.getTeams()[0];
+}
+
+int League::simulateKnockoutMatch(int team1Index, int team2Index) {
+    Team& homeTeam = teams[team1Index];
+    Team& awayTeam = teams[team2Index];
+
+    // Call simulateMatch to update the teams' stats
+    simulateGroupMatch(team1Index, team2Index);
+
+    // Determine who won or if it's a draw
+    if (homeTeam.getLeaguePoints() > awayTeam.getLeaguePoints()) {
+        return team1Index;  // Home team wins
+    }
+    else if (awayTeam.getLeaguePoints() > homeTeam.getLeaguePoints()) {
+        return team2Index;  // Away team wins
+    }
+    else {
+        // If it's a draw, call the penaltyShootout function
+        return penaltyShootout(homeTeam, team1Index, awayTeam, team2Index);  // Return the winner after shootout
+    }
+}
+
+int League::penaltyShootout(Team& homeTeam, int team1Index, Team& awayTeam, int team2Index) {
+    int homeTeamGoals = 0;
+    int awayTeamGoals = 0;
+
+    std::cout << "It's a draw. Going to penalties." << std::endl;
+
+    for (int i = 0; i < 5; ++i) {
+        if (std::rand() % 100 < 80) {
+            homeTeamGoals++;
+        }
+
+        if (std::rand() % 100 < 80) {
+            awayTeamGoals++;
+        }
+    }
+
+    if (homeTeamGoals > awayTeamGoals) {
+        homeTeam.addWin();
+        awayTeam.addLoss();
+        return team1Index;
+    }
+    else if (awayTeamGoals > homeTeamGoals) {
+        awayTeam.addWin();
+        homeTeam.addLoss();
+        return team2Index;
+    }
+
+    int round = 1;
+    while (true) {
+        std::cout << "Sudden death round " << round << "...\n";
+
+        if (std::rand() % 100 < 80) {
+            homeTeamGoals++;
+        }
+
+        if (std::rand() % 100 < 80) {
+            awayTeamGoals++;
+        }
+
+        if (homeTeamGoals > awayTeamGoals) {
+            homeTeam.addWin();
+            awayTeam.addLoss();
+            return team1Index;
+        }
+        else if (awayTeamGoals > homeTeamGoals) {
+            awayTeam.addWin();
+            homeTeam.addLoss();
+            return team2Index;
+        }
+
+        round++;
+    }
+
+}
+
+void League::simulateGroupMatch(int team1Index, int team2Index) {
     Team& homeTeam = teams[team1Index];
     Team& awayTeam = teams[team2Index];
 
@@ -178,4 +332,15 @@ void League::displayLeagueTable() const {
 
 std::vector<Team>& League::getTeams() {
     return teams;
+}
+
+Team& League::getTeamByIndex(int index) {
+    // Check if the index is valid (i.e., within the bounds of the teams vector)
+    if (index >= 0 && index < teams.size()) {
+        return teams[index];  // Return the team at the specified index
+    }
+    else {
+        // If index is out of bounds, throw an exception or handle error appropriately
+        throw std::out_of_range("Index is out of range");
+    }
 }

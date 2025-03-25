@@ -11,8 +11,8 @@ void Tournament::runRoundRobin() {
 
     for (int i = 0; i < numTeams; ++i) {
         for (int j = i + 1; j < numTeams; ++j) {
-            league.simulateMatch(i, j);
-            league.simulateMatch(j, i);
+            league.simulateGroupMatch(i, j);
+            league.simulateGroupMatch(j, i);
         }
     }
 

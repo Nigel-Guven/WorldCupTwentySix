@@ -24,7 +24,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WorldCupTwentySix.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="xmlParser.cpp">
@@ -37,6 +37,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tournament.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simulations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -96,6 +99,9 @@
       <Filter>Resource Files\Oceania</Filter>
     </Xml>
     <Xml Include="oceania_group_b.xml">
+      <Filter>Resource Files\Oceania</Filter>
+    </Xml>
+    <Xml Include="oceania_knockout_round.xml">
       <Filter>Resource Files\Oceania</Filter>
     </Xml>
   </ItemGroup>

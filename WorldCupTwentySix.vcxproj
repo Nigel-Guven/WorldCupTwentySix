@@ -128,10 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="league.cpp" />
+    <ClCompile Include="simulations.cpp" />
     <ClCompile Include="team.cpp" />
     <ClCompile Include="tournament.cpp" />
     <ClCompile Include="xmlParser.cpp" />
-    <ClCompile Include="WorldCupTwentySix.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Xsd Include="south_america.xml">
@@ -160,6 +161,7 @@
     <Xml Include="africa_group_g.xml" />
     <Xml Include="africa_group_h.xml" />
     <Xml Include="africa_group_i.xml" />
+    <Xml Include="oceania_knockout_round.xml" />
     <Xml Include="oceania_group_a.xml" />
     <Xml Include="oceania_group_b.xml" />
   </ItemGroup>
