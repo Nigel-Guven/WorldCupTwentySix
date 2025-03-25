@@ -150,6 +150,17 @@
     <ClInclude Include="tournament.h" />
     <ClInclude Include="xmlParser.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="africa_group_a.xml" />
+    <Xml Include="africa_group_b.xml" />
+    <Xml Include="africa_group_c.xml" />
+    <Xml Include="africa_group_d.xml" />
+    <Xml Include="africa_group_e.xml" />
+    <Xml Include="africa_group_f.xml" />
+    <Xml Include="africa_group_g.xml" />
+    <Xml Include="africa_group_h.xml" />
+    <Xml Include="africa_group_i.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

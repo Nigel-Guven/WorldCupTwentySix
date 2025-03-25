@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Morocco</name>
+    <points>46</points>
+  </team>
+  <team>
+    <name>Niger</name>
+    <points>19</points>
+  </team>
+  <team>
+    <name>Tanzania</name>
+    <points>23</points>
+  </team>
+  <team>
+    <name>Zambia</name>
+    <points>28</points>
+  </team>
+  <team>
+    <name>Congo</name>
+    <points>18</points>
+  </team>
+  <team>
+    <name>Eritrea</name>
+    <points>1</points>
+  </team>
+</teams>

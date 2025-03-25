@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Algeria</name>
+    <points>40</points>
+  </team>
+  <team>
+    <name>Mozambique</name>
+    <points>26</points>
+  </team>
+  <team>
+    <name>Guinea</name>
+    <points>30</points>
+  </team>
+  <team>
+    <name>Botswana</name>
+    <points>16</points>
+  </team>
+  <team>
+    <name>Uganda</name>
+    <points>28</points>
+  </team>
+  <team>
+    <name>Somalia</name>
+    <points>2</points>
+  </team>
+</teams>

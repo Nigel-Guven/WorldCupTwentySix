@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Cabo Verde</name>
+    <points>32</points>
+  </team>
+  <team>
+    <name>Cameroon</name>
+    <points>37</points>
+  </team>
+  <team>
+    <name>Libya</name>
+    <points>20</points>
+  </team>
+  <team>
+    <name>Angola</name>
+    <points>29</points>
+  </team>
+  <team>
+    <name>Mauritius</name>
+    <points>7</points>
+  </team>
+  <team>
+    <name>Eswatini</name>
+    <points>11</points>
+  </team>
+</teams>

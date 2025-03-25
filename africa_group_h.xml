@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Tunisia</name>
+    <points>37</points>
+  </team>
+  <team>
+    <name>Namibia</name>
+    <points>22</points>
+  </team>
+  <team>
+    <name>Liberia</name>
+    <points>14</points>
+  </team>
+  <team>
+    <name>Equatorial Guinea</name>
+    <points>27</points>
+  </team>
+  <team>
+    <name>Malawi</name>
+    <points>17</points>
+  </team>
+  <team>
+    <name>Sao Tome and Principe</name>
+    <points>5</points>
+  </team>
+</teams>

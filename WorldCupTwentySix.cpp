@@ -23,30 +23,6 @@ int main() {
     Tournament tournament(southAmericanLeague);
     tournament.runRoundRobin();
 
-    Tournament tournament2(southAmericanLeague);
-    tournament2.runRoundRobin();
-
-    Tournament tournament3(southAmericanLeague);
-    tournament3.runRoundRobin();
-
-    Tournament tournament4(southAmericanLeague);
-    tournament4.runRoundRobin();
-
-    Tournament tournament5(southAmericanLeague);
-    tournament5.runRoundRobin();
-
-    Tournament tournament6(southAmericanLeague);
-    tournament6.runRoundRobin();
-
-    Tournament tournament7(southAmericanLeague);
-    tournament7.runRoundRobin();
-
-    Tournament tournament8(southAmericanLeague);
-    tournament8.runRoundRobin();
-
-    Tournament tournament9(southAmericanLeague);
-    tournament9.runRoundRobin();
-
 
     return 0;
 }

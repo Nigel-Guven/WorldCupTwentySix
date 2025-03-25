@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Cote d'Ivoire</name>
+    <points>38</points>
+  </team>
+  <team>
+    <name>Gabon</name>
+    <points>29</points>
+  </team>
+  <team>
+    <name>Burundi</name>
+    <points>15</points>
+  </team>
+  <team>
+    <name>Kenya</name>
+    <points>23</points>
+  </team>
+  <team>
+    <name>Gambia</name>
+    <points>19</points>
+  </team>
+  <team>
+    <name>Seychelles</name>
+    <points>3</points>
+  </team>
+</teams>

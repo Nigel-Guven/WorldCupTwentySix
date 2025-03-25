@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Sudan</name>
+    <points>22</points>
+  </team>
+  <team>
+    <name>DR Congo</name>
+    <points>34</points>
+  </team>
+  <team>
+    <name>Senegal</name>
+    <points>45</points>
+  </team>
+  <team>
+    <name>Togo</name>
+    <points>20</points>
+  </team>
+  <team>
+    <name>Mauritania</name>
+    <points>23</points>
+  </team>
+  <team>
+    <name>South Sudan</name>
+    <points>9</points>
+  </team>
+</teams>

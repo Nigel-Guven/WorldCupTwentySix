@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\SouthAmerica">
+      <UniqueIdentifier>{d1bee676-f095-4037-8d5d-2fb90752006d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Africa">
+      <UniqueIdentifier>{c26ab367-099b-4361-85bb-27912bfe6037}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WorldCupTwentySix.cpp">
@@ -32,11 +38,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Xsd Include="south_america.xml">
-      <Filter>Resource Files</Filter>
-    </Xsd>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="world_rankings.json">
       <Filter>Resource Files</Filter>
     </None>
@@ -54,5 +55,39 @@
     <ClInclude Include="tournament.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="south_america.xml">
+      <Filter>Resource Files\SouthAmerica</Filter>
+    </Xsd>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="africa_group_a.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_b.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_c.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_d.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_e.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_f.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_g.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_h.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
+    <Xml Include="africa_group_i.xml">
+      <Filter>Resource Files\Africa</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

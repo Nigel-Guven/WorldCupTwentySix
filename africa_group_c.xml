@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>South Africa</name>
+    <points>35</points>
+  </team>
+  <team>
+    <name>Benin</name>
+    <points>26</points>
+  </team>
+  <team>
+    <name>Rwanda</name>
+    <points>19</points>
+  </team>
+  <team>
+    <name>Nigeria</name>
+    <points>39</points>
+  </team>
+  <team>
+    <name>Lesotho</name>
+    <points>13</points>
+  </team>
+  <team>
+    <name>Zimbabwe</name>
+    <points>20</points>
+  </team>
+</teams>

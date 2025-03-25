@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Ghana</name>
+    <points>31</points>
+  </team>
+  <team>
+    <name>Madagascar</name>
+    <points>21</points>
+  </team>
+  <team>
+    <name>Mali</name>
+    <points>37</points>
+  </team>
+  <team>
+    <name>Comoros</name>
+    <points>24</points>
+  </team>
+  <team>
+    <name>Central African Republic</name>
+    <points>16</points>
+  </team>
+  <team>
+    <name>Chad</name>
+    <points>8</points>
+  </team>
+</teams>

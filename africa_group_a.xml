@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Egypt</name>
+    <points>41</points>
+  </team>
+  <team>
+    <name>Burkina Faso</name>
+    <points>33</points>
+  </team>
+  <team>
+    <name>Sierra Leone</name>
+    <points>18</points>
+  </team>
+  <team>
+    <name>Ethiopia</name>
+    <points>14</points>
+  </team>
+  <team>
+    <name>Guinea-Bissau</name>
+    <points>20</points>
+  </team>
+  <team>
+    <name>Djibouti</name>
+    <points>5</points>
+  </team>
+</teams>
