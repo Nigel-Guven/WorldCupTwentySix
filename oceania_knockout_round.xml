@@ -2,18 +2,66 @@
 <teams>
   <team>
     <name>Cook Islands</name>
-    <points>5</points>
+    <points>1</points>
   </team>
   <team>
     <name>Tonga</name>
-    <points>3</points>
+    <points>1</points>
   </team>
   <team>
     <name>American Samoa</name>
-    <points>5</points>
+    <points>1</points>
   </team>
   <team>
     <name>Samoa</name>
-    <points>4</points>
+    <points>1</points>
+  </team>
+  <team>
+    <name>New Caledonia</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Fiji</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Solomon Islands</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Papua New Guinea</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Cabo Verde</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Cameroon</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Libya</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Angola</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Mauritius</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Eswatini</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Gambia</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Fag Country</name>
+    <points>1</points>
   </team>
 </teams>

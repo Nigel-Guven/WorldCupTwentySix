@@ -38,7 +38,6 @@ Team startKnockoutMatch(Team& homeTeam, Team& awayTeam) {
     int team2Points = awayTeam.getRankingPoints();
     int totalPoints = 100;
     int remainingPoints = totalPoints - (team1Points + team2Points);
-
     int gameMode = std::rand() % 4;
 
     switch (gameMode) {

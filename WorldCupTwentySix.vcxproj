@@ -130,6 +130,7 @@
     <ClCompile Include="knockoutRound.cpp" />
     <ClCompile Include="league.cpp" />
     <ClCompile Include="match.cpp" />
+    <ClCompile Include="random_seed.cpp" />
     <ClCompile Include="simulations.cpp" />
     <ClCompile Include="team.cpp" />
     <ClCompile Include="tournament.cpp" />

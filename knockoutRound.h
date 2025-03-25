@@ -5,13 +5,13 @@
 #include <vector>
 
 struct KnockoutRound {
-    Team& team1;
-    Team& team2;
+    Team team1;
+    Team team2;
     KnockoutRound* left;
     KnockoutRound* right;
-    Team& winner;
+    Team winner;
 
-    KnockoutRound(Team& t1, Team& t2);
+    KnockoutRound(Team t1, Team t2);
     void startMatch();  // Function to start the knockout match
 };
 
