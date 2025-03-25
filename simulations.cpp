@@ -34,24 +34,23 @@ void simulateClassicGameMode(Team& homeTeam, Team& awayTeam, int& team1Points, i
 void simulateRandomGameMode(Team& homeTeam, Team& awayTeam, int& team1Points, int& team2Points, bool isKnockout) {
     int homeWinChance = team1Points;
     int awayWinChance = 100 - team2Points;
-    int drawChanceStart = team1Points + 1;
 
     int randomNumber = std::rand() % 100 + 1;
 
-    if (randomNumber >= drawChanceStart && randomNumber <= team2Points) {
-        homeTeam.addDraw();
-        awayTeam.addDraw();
+    if (randomNumber > awayWinChance) {
+        awayTeam.addWin();
+        homeTeam.addLoss();
     }
-    else if (randomNumber <= homeWinChance) {
+    else if (randomNumber < homeWinChance) {
         homeTeam.addWin();
         awayTeam.addLoss();
     }
     else if (isKnockout) {
         penaltyShootout(homeTeam, awayTeam);
     }
-    else {
-        awayTeam.addWin();
-        homeTeam.addLoss();
+    else {      
+        homeTeam.addDraw();
+        awayTeam.addDraw();
     }
 }
 
@@ -141,6 +140,51 @@ void simulateNegativeInfluenceGameMode(Team& homeTeam, Team& awayTeam, int& team
         penaltyShootout(homeTeam, awayTeam);
     }
     else {
+        homeTeam.addDraw();
+        awayTeam.addDraw();
+    }
+}
+
+void simulate5545GameMode(Team& homeTeam, Team& awayTeam, int& team1Points, int& team2Points, bool isKnockout) {
+    
+    int homeTeamPoints = 0;
+    int awayTeamPoints = 0;
+
+    if (team1Points > team2Points)
+    {
+        homeTeamPoints == 100-55;
+        awayTeamPoints == 45;
+    }
+    else if (team2Points > team1Points)
+    {
+        homeTeamPoints == 100-45;
+        awayTeamPoints == 55;
+    }
+
+    while ((homeTeamPoints < 100) && (awayTeamPoints < 100)) {
+        bool team1GetsPoint = std::rand() % 2 == 0;
+        if (team1GetsPoint) {
+            homeTeamPoints++;
+        }
+        else {
+            awayTeamPoints++;
+        }
+    }
+    
+    // Check the winner or draw
+    if (homeTeamPoints >= 100) {
+        homeTeam.addWin();
+        awayTeam.addLoss();
+    }
+    else if (awayTeamPoints >= 100) {
+        awayTeam.addWin();
+        homeTeam.addLoss();
+    }
+    else if (isKnockout) {
+        penaltyShootout(homeTeam, awayTeam);
+    }
+    else {
+        // If the difference is 4 or less, it is a draw
         homeTeam.addDraw();
         awayTeam.addDraw();
     }

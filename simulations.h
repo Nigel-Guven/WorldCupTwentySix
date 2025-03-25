@@ -8,6 +8,7 @@ void simulateClassicGameMode(Team& homeTeam, Team& awayTeam, int& team1Points, i
 void simulateRandomGameMode(Team& homeTeam, Team& awayTeam, int& team1Points, int& team2Points, bool isKnockout);
 void simulateFirstTo50GameMode(Team& homeTeam, Team& awayTeam, bool isKnockout);
 void simulateNegativeInfluenceGameMode(Team& homeTeam, Team& awayTeam, int& team1Points, int& team2Points, bool isKnockout);
+void simulate5545GameMode(Team& homeTeam, Team& awayTeam, int& team1Points, int& team2Points, bool isKnockout);
 
 Team penaltyShootout(Team& homeTeam, Team& awayTeam);
 Team penaltyShootoutSuddenDeath(Team& homeTeam, Team& awayTeam);

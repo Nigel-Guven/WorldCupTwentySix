@@ -14,7 +14,7 @@ void startGroupMatch(int team1Index, int team2Index, League& league) {
     int totalPoints = 100;
     int remainingPoints = totalPoints - (team1Points + team2Points);
 
-    int gameMode = std::rand() % 4;
+    int gameMode = std::rand() % 5;
 
     switch (gameMode) {
     case 0:
@@ -29,6 +29,9 @@ void startGroupMatch(int team1Index, int team2Index, League& league) {
     case 3:
         simulateNegativeInfluenceGameMode(homeTeam, awayTeam, team1Points, team2Points, false);
         break;
+    case 4:
+        simulate5545GameMode(homeTeam, awayTeam, team1Points, team2Points, true);
+        break;
     }
 }
 
@@ -38,7 +41,7 @@ Team startKnockoutMatch(Team& homeTeam, Team& awayTeam) {
     int team2Points = awayTeam.getRankingPoints();
     int totalPoints = 100;
     int remainingPoints = totalPoints - (team1Points + team2Points);
-    int gameMode = std::rand() % 4;
+    int gameMode = std::rand() % 5;
 
     switch (gameMode) {
     case 0:
@@ -52,6 +55,9 @@ Team startKnockoutMatch(Team& homeTeam, Team& awayTeam) {
         break;
     case 3:
         simulateNegativeInfluenceGameMode(homeTeam, awayTeam, team1Points, team2Points, true);
+        break;
+    case 4:
+        simulate5545GameMode(homeTeam, awayTeam, team1Points, team2Points, true);
         break;
     }
 

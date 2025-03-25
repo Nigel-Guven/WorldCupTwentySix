@@ -32,9 +32,9 @@ KnockoutRound* buildKnockoutTree(std::vector<Team>& teams) {
     for (size_t i = 0; i < adjustedTeams.size(); i += 2) {
         // Ensure that we're not out of bounds
         if (i + 1 < adjustedTeams.size()) {
-            std::cout << "Creating match: " << adjustedTeams[i].getName()
-                << " vs " << adjustedTeams[i + 1].getName() << std::endl;
             KnockoutRound* matchNode = new KnockoutRound(adjustedTeams[i], adjustedTeams[i + 1]);
+            adjustedTeams[i].displayStats();
+            adjustedTeams[i + 1].displayStats();
             matchNode->startMatch(); // Simulate the match and assign the winner
             nextRoundNodes.push_back(matchNode);
         }
@@ -52,9 +52,9 @@ KnockoutRound* buildKnockoutTree(std::vector<Team>& teams) {
 
         for (size_t i = 0; i < nextRoundNodes.size(); i += 2) {
             if (i + 1 < nextRoundNodes.size()) {
-                std::cout << "Creating match between: "
-                    << nextRoundNodes[i]->winner.getName() << " vs "
-                    << nextRoundNodes[i + 1]->winner.getName() << std::endl;
+                nextRoundNodes[i]->winner.displayStats();
+                nextRoundNodes[i+1]->winner.displayStats();
+
                 KnockoutRound* matchNode = new KnockoutRound(nextRoundNodes[i]->winner, nextRoundNodes[i + 1]->winner);
                 matchNode->startMatch(); // Simulate the match and assign the winner
                 nextLevelNodes.push_back(matchNode);

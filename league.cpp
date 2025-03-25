@@ -19,18 +19,6 @@ void League::sortTeams() {
         return a.getLeaguePoints() > b.getLeaguePoints();
         });
 }
-/*
-Team League::processKnockoutFromXMLFile(const std::string& fileName) {
-    XMLParser parser(fileName);
-    std::vector<Team> xmlTeams = parser.parseXML();
-
-    League league;
-    for (const auto& team : xmlTeams) {
-        league.addTeam(team);
-    }
-
-
-}*/
 
 void League::displayLeagueTable() const {
     std::cout << "League Table: \n";

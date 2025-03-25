@@ -13,12 +13,9 @@ public:
     std::vector<Team>& getTeams();
     Team& getTeamByIndex(int index);
 
+    League createLeagueFromXMLFile(const std::string& fileName);
     void sortTeams();
 
-    Team processKnockoutFromXMLFile(const std::string& fileName);
-    Team processKnockoutFromLeague(League league);
-
-      
     void displayLeagueTable() const;
     
     
