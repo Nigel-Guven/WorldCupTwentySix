@@ -12,7 +12,7 @@ void League::addTeam(const Team& team) {
     teams.push_back(team);
 }
 
-void League::sortTeams() {
+void League::sortTeamsByLeaguePoints() {
     std::sort(teams.begin(), teams.end(), [](const Team& a, const Team& b) {
         if (a.getLeaguePoints() == b.getLeaguePoints())
             return a.getRankingPoints() > b.getRankingPoints();
@@ -20,11 +20,27 @@ void League::sortTeams() {
         });
 }
 
+void League::sortTeamsByRankingPoints() {
+    std::sort(teams.begin(), teams.end(), [](const Team& a, const Team& b) 
+    {
+        return a.getRankingPoints() > b.getRankingPoints();
+    });
+}
+
 void League::displayLeagueTable() const {
-    std::cout << "League Table: \n";
+    std::cout << "\nLeague Table: \n";
     for (const auto& team : teams) {
         team.displayStats();
     }
+    std::cout << "\n";
+}
+
+void League::displayLeagueTeamAndRank() const {
+    std::cout << "\nLeague Table: \n";
+    for (const auto& team : teams) {
+        std::cout << team.getName() << ", Rank: " << team.getRankingPoints() << std::endl;
+    }
+    std::cout << "\n";
 }
 
 std::vector<Team>& League::getTeams() {

@@ -8,9 +8,12 @@
 #include <random>
 #include "KnockoutRound.h"
 #include "jsonParser.h"
+#include <thread>
+#include <chrono>
 
 League createLeagueFromXMLFile(const std::string& fileName);
-std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amountOfGroups, int groupSize);
+std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amountOfGroups, int groupSize, bool delay);
+std::vector<Team> getSubset(const std::vector<Team>& teams, int start, int end);
 
 int main() {
     
@@ -19,13 +22,100 @@ int main() {
     #ifndef  World Rankings
 
     /*
-        Europe
+        World Rankings
     */
 
     JSONParser parser;
     std::unordered_map<std::string, int> worldRankings = parser.parseJsonFile("world_rankings.json");
 
     #endif
+
+    #ifndef  Asia
+
+    /*
+        Asia
+    */
+
+    League asiaFirstRoundTeams = createLeagueFromXMLFile("asia_first_round.xml");
+    League asiaSecondRoundTeams = createLeagueFromXMLFile("asia_second_round.xml");
+    League asiaThirdRoundTeams;
+    League asiaFourthRoundTeams;
+    League asianFifthRoundTeams;
+
+    League worldCupAsianQualifiedTeams;
+    League asianWorldCupInterConfederationPlayoffTeams;
+
+    std::vector<std::vector<Team>> listOfKnockoutMatches = splitKnockoutTeamsIntoSubsets(asiaFirstRoundTeams.getTeams(), 10);
+
+    for (std::vector<Team> teamVector : listOfKnockoutMatches)
+    {
+        KnockoutRound* asiaFirstRoundFixture = buildKnockoutTree(teamVector);
+        asiaSecondRoundTeams.addTeam(asiaFirstRoundFixture->winner);
+    }
+
+    std::vector<League> asianSecondRoundGroups =
+        allocateTeamsIntoGroups(asiaSecondRoundTeams.getTeams(), 9, 4, false);
+
+    for (int i = 0; i < asianSecondRoundGroups.size(); i++)
+    {
+        Tournament asiaSecondRoundTournament(asianSecondRoundGroups.at(i));
+        asiaSecondRoundTournament.runRoundRobin(true);
+
+        Team groupWinner = asianSecondRoundGroups.at(i).getTeamByIndex(0);
+        Team groupRunnerUp = asianSecondRoundGroups.at(i).getTeamByIndex(1);
+
+        asiaThirdRoundTeams.addTeam(groupWinner);
+        asiaThirdRoundTeams.addTeam(groupRunnerUp);
+    }
+
+    asiaThirdRoundTeams.sortTeamsByRankingPoints();
+
+    std::vector<League> asiaThirdRoundGroups =
+        allocateTeamsIntoGroups(asiaThirdRoundTeams.getTeams(), 3, 6, false);
+
+    for (int i = 0; i < asiaThirdRoundGroups.size(); i++)
+    {
+        Tournament asiaThirdRoundTournament(asiaThirdRoundGroups.at(i));
+        asiaThirdRoundTournament.runRoundRobin(true);
+
+        Team groupWinner = asiaThirdRoundGroups.at(i).getTeamByIndex(0);
+        Team groupRunnerUp = asiaThirdRoundGroups.at(i).getTeamByIndex(1);
+        Team groupThirdPlace = asiaThirdRoundGroups.at(i).getTeamByIndex(2);
+        Team groupFourthPlace = asiaThirdRoundGroups.at(i).getTeamByIndex(3);
+
+        worldCupAsianQualifiedTeams.addTeam(groupWinner);
+        worldCupAsianQualifiedTeams.addTeam(groupRunnerUp);
+        asiaFourthRoundTeams.addTeam(groupThirdPlace);
+        asiaFourthRoundTeams.addTeam(groupFourthPlace);
+    }
+
+    asiaFourthRoundTeams.sortTeamsByRankingPoints();
+
+    std::vector<League> asiaFourthRoundGroups =
+        allocateTeamsIntoGroups(asiaFourthRoundTeams.getTeams(), 2, 3, false);
+
+    for (int i = 0; i < asiaFourthRoundGroups.size(); i++)
+    {
+        Tournament asiaFourthRoundTournament(asiaFourthRoundGroups.at(i));
+        asiaFourthRoundTournament.runRoundRobin(true);
+
+        Team groupWinner = asiaFourthRoundGroups.at(i).getTeamByIndex(0);
+        Team groupRunnerUp = asiaFourthRoundGroups.at(i).getTeamByIndex(1);
+
+        worldCupAsianQualifiedTeams.addTeam(groupWinner);
+        asianFifthRoundTeams.addTeam(groupRunnerUp);
+    }
+
+    Tournament asiaFifthRoundTournament(asianFifthRoundTeams);
+    asiaFifthRoundTournament.runRoundRobin(true);
+
+    asianWorldCupInterConfederationPlayoffTeams.addTeam(asianFifthRoundTeams.getTeams().at(0));
+
+    /*
+        ---------------------------------
+    */
+
+    #endif       
 
     #ifndef  North America
 
@@ -47,7 +137,7 @@ int main() {
     northAmericanSecondRoundTeams.addTeam(northAmericanFirstRoundTeams.getTeamByIndex(1));
  
     std::vector<League> northAmericanSecondRoundGroups = 
-        allocateTeamsIntoGroups(northAmericanSecondRoundTeams.getTeams(), 6, 5);
+        allocateTeamsIntoGroups(northAmericanSecondRoundTeams.getTeams(), 6, 5, false);
 
     for (int i = 0; i < northAmericanSecondRoundGroups.size(); i++)
     {
@@ -62,24 +152,25 @@ int main() {
     }
 
     std::vector<League> northAmericanThirdRoundGroups =
-        allocateTeamsIntoGroups(northAmericanThirdRoundTeams.getTeams(), 3, 4);
+        allocateTeamsIntoGroups(northAmericanThirdRoundTeams.getTeams(), 3, 4, false);
 
     for (int i = 0; i < northAmericanThirdRoundGroups.size(); i++)
     {
         Tournament northAmericaThirdRoundTournament(northAmericanThirdRoundGroups.at(i));
         northAmericaThirdRoundTournament.runRoundRobin(false);
 
-        worldCupNorthAmericanQualifiedTeams.addTeam(northAmericanThirdRoundGroups.at(i).getTeamByIndex(0));
+        Team thirdRoundFirstPlace = northAmericanThirdRoundGroups.at(i).getTeamByIndex(0);
+        thirdRoundFirstPlace.resetStats();
+        worldCupNorthAmericanQualifiedTeams.addTeam(thirdRoundFirstPlace);
+
         northAmericaWorldCupInterConfederationPlayoffTeams.addTeam(northAmericanThirdRoundGroups.at(i).getTeamByIndex(1));
-        northAmericaWorldCupInterConfederationPlayoffTeams.sortTeams();
+        northAmericaWorldCupInterConfederationPlayoffTeams.sortTeamsByLeaguePoints();
 
         if (northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().size() == 3)
         {
             northAmericaWorldCupInterConfederationPlayoffTeams.removeTeams(1);
         }
     }
-
-
 
     /*
         ---------------------------------
@@ -111,7 +202,7 @@ int main() {
     XMLParser uefaNationsLeagueParser("uefa_nations_league_rankings.xml");
     std::vector<Team> nationsLeagueTeams = uefaNationsLeagueParser.parsePlayoffXML();
 
-    League worldCupUefaQualifiedTeamsForWorldCup;
+    League worldCupUefaQualifiedTeams;
     League uefaGroupsSecondRound;
     
 
@@ -124,8 +215,8 @@ int main() {
         Team team1 = uefaGroup.getTeamByIndex(0);
         Team team2 = uefaGroup.getTeamByIndex(1);
 
-        if (std::find(worldCupUefaQualifiedTeamsForWorldCup.getTeams().begin(), worldCupUefaQualifiedTeamsForWorldCup.getTeams().end(), team1) == worldCupUefaQualifiedTeamsForWorldCup.getTeams().end()) {
-            worldCupUefaQualifiedTeamsForWorldCup.addTeam(team1);
+        if (std::find(worldCupUefaQualifiedTeams.getTeams().begin(), worldCupUefaQualifiedTeams.getTeams().end(), team1) == worldCupUefaQualifiedTeams.getTeams().end()) {
+            worldCupUefaQualifiedTeams.addTeam(team1);
         }
 
         if (std::find(uefaGroupsSecondRound.getTeams().begin(), uefaGroupsSecondRound.getTeams().end(), team2) == uefaGroupsSecondRound.getTeams().end()) {
@@ -159,7 +250,8 @@ int main() {
 
     for (Team team : secondRoundWinners)
     {
-        worldCupUefaQualifiedTeamsForWorldCup.addTeam(team);
+        team.resetStats();
+        worldCupUefaQualifiedTeams.addTeam(team);
     }
 
     /*
@@ -174,7 +266,7 @@ int main() {
         South America
     */
 
-    League worldCupSouthAmericaQualifiedTeamsForWorldCup;
+    League worldCupSouthAmericaQualifiedTeams;
 
     League southAmericanTable = createLeagueFromXMLFile("south_america.xml");
     Tournament southAmericanTournament(southAmericanTable);
@@ -185,7 +277,7 @@ int main() {
     for (int i = 0; i < 6; i++)
     {
         Team southAmericanTeam = southAmericanTable.getTeamByIndex(i);
-        worldCupSouthAmericaQualifiedTeamsForWorldCup.addTeam(southAmericanTeam);
+        worldCupSouthAmericaQualifiedTeams.addTeam(southAmericanTeam);
     }
 
     /*
@@ -200,7 +292,7 @@ int main() {
         Africa
     */
 
-    League worldCupAfricaQualifiedTeamsForWorldCup;
+    League worldCupAfricaQualifiedTeams;
 
     const std::vector<std::string> africaGroups = {
         "africa_group_a.xml",
@@ -224,11 +316,12 @@ int main() {
         Team firstPlaceTeam = africanGroup.getTeamByIndex(0);
         Team secondPlaceTeam = africanGroup.getTeamByIndex(1);
 
-        worldCupAfricaQualifiedTeamsForWorldCup.addTeam(firstPlaceTeam);
+        firstPlaceTeam.resetStats();
+        worldCupAfricaQualifiedTeams.addTeam(firstPlaceTeam);
         africaGroupsSecondPlace.addTeam(secondPlaceTeam);
     }
 
-    africaGroupsSecondPlace.sortTeams();
+    africaGroupsSecondPlace.sortTeamsByLeaguePoints();
     africaGroupsSecondPlace.displayLeagueTable();
 
     std::vector<Team> knockoutRoundTeams = {
@@ -253,7 +346,7 @@ int main() {
         OCEANIA
     */
 
-    League worldCupOceaniaQualifiedTeamsForWorldCup;
+    League worldCupOceaniaQualifiedTeams;
 
     XMLParser groupAParser("oceania_knockout_round.xml");
     std::vector<Team> groupATeams = groupAParser.parseXML();
@@ -286,7 +379,149 @@ int main() {
     Team finalRoundOceaniaWinner = finalOceaniaRound->winner;
     Team oceaniaInterConfederationPlayoffTeam = finalOceaniaRound->loser;
 
-    worldCupOceaniaQualifiedTeamsForWorldCup.addTeam(finalRoundOceaniaWinner);
+    finalRoundOceaniaWinner.resetStats();
+
+    worldCupOceaniaQualifiedTeams.addTeam(finalRoundOceaniaWinner);
+
+    /*
+        ---------------------------------
+    */
+
+    #endif
+
+    #ifndef Inter Confederation Playoffs
+
+    /*
+        Inter Confederation Playoffs
+    */
+
+    std::cout << asianWorldCupInterConfederationPlayoffTeams.getTeams().at(0).getName() << std::endl;
+    std::cout << africanInterConfederationPlayoffTeam.getName() << std::endl;
+    std::cout << northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().at(0).getName() << std::endl;
+    std::cout << northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().at(1).getName() << std::endl;
+    std::cout << southAmericanInterConfederationPlayoffTeam.getName() << std::endl;
+    std::cout << oceaniaInterConfederationPlayoffTeam.getName() << std::endl;
+
+    League interConfederationPlayoffTeams;
+    League interConfederationPlayoffWinners;
+
+    interConfederationPlayoffTeams.addTeam(asianWorldCupInterConfederationPlayoffTeams.getTeams().at(0));
+    interConfederationPlayoffTeams.addTeam(africanInterConfederationPlayoffTeam);
+    interConfederationPlayoffTeams.addTeam(northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().at(0));
+    interConfederationPlayoffTeams.addTeam(northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().at(1));
+    interConfederationPlayoffTeams.addTeam(southAmericanInterConfederationPlayoffTeam);
+    interConfederationPlayoffTeams.addTeam(oceaniaInterConfederationPlayoffTeam);
+    
+    interConfederationPlayoffTeams.sortTeamsByRankingPoints();
+
+    std::vector<League> interConfederationPlayoffPaths =
+        allocateTeamsIntoGroups(interConfederationPlayoffTeams.getTeams(), 2, 3, false);
+
+
+    std::vector<Team> interConfederationPathASemiFinal = getSubset(interConfederationPlayoffPaths.at(0).getTeams(), 1, 2);
+    
+    KnockoutRound* interConfederationPathASemiFinalFixture
+        = buildKnockoutTree(interConfederationPathASemiFinal);
+
+    std::vector<Team> interConfederationPathAFinal =
+    {
+        interConfederationPlayoffPaths.at(0).getTeams().at(0),  // First team
+        interConfederationPathASemiFinalFixture->winner
+    };
+
+    KnockoutRound* interConfederationPathAFinalFixture
+        = buildKnockoutTree(interConfederationPathAFinal);
+
+    std::vector<Team> interConfederationPathBSemiFinal = getSubset(interConfederationPlayoffPaths.at(1).getTeams(), 1, 2);
+
+    KnockoutRound* interConfederationPathBSemiFinalFixture
+        = buildKnockoutTree(interConfederationPathBSemiFinal);
+
+    std::vector<Team> interConfederationPathBFinal =
+    {
+        interConfederationPlayoffPaths.at(1).getTeams().at(0),  // First team
+        interConfederationPathBSemiFinalFixture->winner
+    };
+
+    KnockoutRound* interConfederationPathBFinalFixture
+        = buildKnockoutTree(interConfederationPathBFinal);
+
+    Team teamFromPathA = interConfederationPathAFinalFixture->winner;
+    Team teamFromPathB = interConfederationPathBFinalFixture->winner;
+
+    teamFromPathA.resetStats();
+    teamFromPathB.resetStats();
+
+    interConfederationPlayoffWinners.addTeam(teamFromPathA);
+    interConfederationPlayoffWinners.addTeam(teamFromPathB);
+
+    for (Team team : interConfederationPlayoffWinners.getTeams()) {
+        if (team.getName() == asianWorldCupInterConfederationPlayoffTeams.getTeams().at(0).getName()) {
+            worldCupAsianQualifiedTeams.addTeam(team);
+        }
+        else if (team.getName() == africanInterConfederationPlayoffTeam.getName()) {
+            worldCupAfricaQualifiedTeams.addTeam(team);
+        }
+        else if (team.getName() == southAmericanInterConfederationPlayoffTeam.getName()) {
+            worldCupSouthAmericaQualifiedTeams.addTeam(team);
+        }
+        else if (team.getName() == oceaniaInterConfederationPlayoffTeam.getName()) {
+            worldCupOceaniaQualifiedTeams.addTeam(team);
+        }
+        else if (team.getName() == northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().at(0).getName() ||
+            team.getName() == northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().at(1).getName()) {
+            worldCupNorthAmericanQualifiedTeams.addTeam(team);
+        }
+    }
+    /*
+        ---------------------------------
+    */
+
+    #endif
+
+    #ifndef World Cup Allocation
+
+    /*
+        World Cup Group Allocation
+    */
+
+    League worldCupHosts = createLeagueFromXMLFile("hosts.xml");
+
+    worldCupHosts.displayLeagueTeamAndRank();
+    worldCupAfricaQualifiedTeams.displayLeagueTeamAndRank();
+    worldCupAsianQualifiedTeams.displayLeagueTeamAndRank();
+    worldCupUefaQualifiedTeams.displayLeagueTeamAndRank();
+    worldCupNorthAmericanQualifiedTeams.displayLeagueTeamAndRank();
+    worldCupSouthAmericaQualifiedTeams.displayLeagueTeamAndRank();
+    worldCupOceaniaQualifiedTeams.displayLeagueTeamAndRank();
+
+    League allQualifiedTeams;
+
+    for (Team team : worldCupAfricaQualifiedTeams.getTeams()) { allQualifiedTeams.addTeam(team); }
+    for (Team team : worldCupAsianQualifiedTeams.getTeams()) { allQualifiedTeams.addTeam(team); }
+    for (Team team : worldCupUefaQualifiedTeams.getTeams()) { allQualifiedTeams.addTeam(team); }
+    for (Team team : worldCupNorthAmericanQualifiedTeams.getTeams()) { allQualifiedTeams.addTeam(team); }
+    for (Team team : worldCupSouthAmericaQualifiedTeams.getTeams()) { allQualifiedTeams.addTeam(team); }
+    for (Team team : worldCupOceaniaQualifiedTeams.getTeams()) { allQualifiedTeams.addTeam(team); }
+
+    allQualifiedTeams.sortTeamsByRankingPoints();
+
+    std::vector<Team> worldCup2026Teams = worldCupHosts.getTeams();
+    worldCup2026Teams.insert(
+        worldCup2026Teams.end(),
+        allQualifiedTeams.getTeams().begin(),
+        allQualifiedTeams.getTeams().end());
+
+    std::vector<League> worldCup2026Groups = allocateTeamsIntoGroups(worldCup2026Teams, 12, 4, true);
+
+    for (int i = 0; i < worldCup2026Groups.size(); i++)
+    {
+        Tournament worldCupGroup(worldCup2026Groups.at(i));
+        worldCupGroup.runSingleRound(false);
+
+        Team groupWinner = worldCup2026Groups.at(i).getTeamByIndex(0);
+        Team groupRunnerUp = worldCup2026Groups.at(i).getTeamByIndex(1);
+    }
 
     /*
         ---------------------------------
@@ -296,6 +531,8 @@ int main() {
 
     return 0;
 }
+
+#ifndef Functions
 
 League createLeagueFromXMLFile(const std::string& fileName) {
     XMLParser parser(fileName);
@@ -309,7 +546,7 @@ League createLeagueFromXMLFile(const std::string& fileName) {
     return league;
 }
 
-std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amountOfGroups, int groupSize) {
+std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amountOfGroups, int groupSize, bool delay) {
 
     std::vector<League> listOfLeagues;
 
@@ -355,6 +592,9 @@ std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amount
         for (const Team& team : groups[i]) {
             league.addTeam(team);
             std::cout << team.getName() << " ";
+            if (delay) {
+                std::this_thread::sleep_for(std::chrono::seconds(2)); // Sleep for 2 seconds
+            }
         }
         std::cout << std::endl;
 
@@ -363,3 +603,15 @@ std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amount
 
     return listOfLeagues;
 }
+
+std::vector<Team> getSubset(const std::vector<Team>& teams, int start, int end) {
+    // Check if start and end are valid
+    if (start < 0 || end >= teams.size() || start > end) {
+        throw std::invalid_argument("Invalid range for subset.");
+    }
+
+    // Extract the subset using iterators
+    return std::vector<Team>(teams.begin() + start, teams.begin() + end + 1);
+}
+
+#endif

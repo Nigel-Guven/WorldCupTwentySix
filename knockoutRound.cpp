@@ -97,3 +97,31 @@ std::vector<Team> buildMultipleKnockoutTrees(std::vector<Team>& teams) {
 
     return multipleKnockoutRoundWinners;
 }
+
+std::vector<std::vector<Team>> splitKnockoutTeamsIntoSubsets(const std::vector<Team>& teams, int n) {
+
+    if (n <= 0 || n > teams.size()) {
+        throw std::invalid_argument("Invalid number of subsets (n).");
+    }
+
+    int subsetSize = teams.size() / n;
+    int remainder = teams.size() % n;
+
+    std::vector<std::vector<Team>> subsets;
+
+    int index = 0;
+
+    for (int i = 0; i < n; ++i) {
+
+        int currentSubsetSize = subsetSize + (i < remainder ? 1 : 0);
+
+        std::vector<Team> subset;
+        for (int j = 0; j < currentSubsetSize; ++j) {
+            subset.push_back(teams[index++]);
+        }
+
+        subsets.push_back(subset);
+    }
+
+    return subsets;
+}

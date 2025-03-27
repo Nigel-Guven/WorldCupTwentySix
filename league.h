@@ -16,9 +16,11 @@ public:
     void removeTeams(int n);
 
     //League createLeagueFromXMLFile(const std::string& fileName);
-    void sortTeams();
+    void sortTeamsByLeaguePoints();
+    void sortTeamsByRankingPoints();
 
     void displayLeagueTable() const;
+    void displayLeagueTeamAndRank() const;
     
     
 

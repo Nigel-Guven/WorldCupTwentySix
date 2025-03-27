@@ -31,6 +31,9 @@
     <Filter Include="Resource Files\WorldCupHosts">
       <UniqueIdentifier>{d2bb4765-f184-4e97-9819-1c746dfad0f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Asia">
+      <UniqueIdentifier>{c43014a7-be29-4d94-b778-6862399e1c1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -181,6 +184,12 @@
     </Xml>
     <Xml Include="hosts.xml">
       <Filter>Resource Files\WorldCupHosts</Filter>
+    </Xml>
+    <Xml Include="asia_first_round.xml">
+      <Filter>Resource Files\Asia</Filter>
+    </Xml>
+    <Xml Include="asia_second_round.xml">
+      <Filter>Resource Files\Asia</Filter>
     </Xml>
   </ItemGroup>
 </Project>

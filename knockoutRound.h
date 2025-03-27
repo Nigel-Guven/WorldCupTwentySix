@@ -13,10 +13,11 @@ struct KnockoutRound {
     Team loser;
 
     KnockoutRound(Team t1, Team t2);
-    void startMatch();  // Function to start the knockout match
+    void startMatch();
 };
 
 KnockoutRound* buildKnockoutTree(std::vector<Team>& teams);
 std::vector<Team> buildMultipleKnockoutTrees(std::vector<Team>& teams);
+std::vector<std::vector<Team>> splitKnockoutTeamsIntoSubsets(const std::vector<Team>& teams, int n);
 
-#endif  // KNOCKOUT_TOURNAMENT_H
+#endif

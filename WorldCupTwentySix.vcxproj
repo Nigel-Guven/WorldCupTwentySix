@@ -168,6 +168,8 @@
     <Xml Include="africa_group_g.xml" />
     <Xml Include="africa_group_h.xml" />
     <Xml Include="africa_group_i.xml" />
+    <Xml Include="asia_first_round.xml" />
+    <Xml Include="asia_second_round.xml" />
     <Xml Include="hosts.xml" />
     <Xml Include="north_america_first_round.xml" />
     <Xml Include="north_america_second_round.xml" />
