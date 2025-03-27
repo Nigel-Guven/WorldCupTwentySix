@@ -36,7 +36,7 @@ void startGroupMatch(int team1Index, int team2Index, League& league) {
 }
 
 Team startKnockoutMatch(Team& homeTeam, Team& awayTeam) {
-
+    
     int team1Points = homeTeam.getRankingPoints() + 5;
     int team2Points = awayTeam.getRankingPoints();
     int totalPoints = 100;

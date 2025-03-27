@@ -12,8 +12,7 @@ KnockoutRound::KnockoutRound(Team t1, Team t2)
 
 // Simulate the knockout match between team1 and team2
 void KnockoutRound::startMatch() {
-    winner = startKnockoutMatch(team1, team2);
-
+    winner = startKnockoutMatch(team1, team2);   
     if (winner.getName() == team1.getName())
         loser = team2;
     else
@@ -32,6 +31,7 @@ KnockoutRound* buildKnockoutTree(std::vector<Team>& teams) {
         {
             KnockoutRound* matchNode = new KnockoutRound(adjustedTeams[i], adjustedTeams[i + 1]);
             matchNode->startMatch();
+
             nextRoundNodes.push_back(matchNode);
         }
     }
@@ -57,12 +57,10 @@ KnockoutRound* buildKnockoutTree(std::vector<Team>& teams) {
         nextRoundNodes = nextLevelNodes;
     }
 
-    // Start the final match for the winner
-    std::cout << "\nFinal Round:\n" << std::endl;
-    nextRoundNodes[0]->startMatch();  // Simulate the final match
-    std::cout << "Final winner: " << nextRoundNodes[0]->winner.getName() << std::endl;
+    nextRoundNodes[0]->startMatch();
+    std::cout << "Teams: " << nextRoundNodes[0]->team1.getName() << " v " << nextRoundNodes[0]->team2.getName() << "\n" << std::endl;
+    std::cout << "Winner: " << nextRoundNodes[0]->winner.getName() << "\n" << std::endl;
 
-    // Return the final match node (the winner)
     return nextRoundNodes[0];
 }
 
