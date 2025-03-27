@@ -2,6 +2,20 @@
 
 Welcome to the **World Cup 2026 Simulator**! This project is a C++ program designed to simulate the FIFA World Cup 2026 tournament using multiple randomized game modes. The simulator takes into account the current FIFA international team rankings and employs advanced data structures such as binary trees and vectors to store the tournament's knockout rounds and groups. It supports both **Round Robin** and **Single Match** formats for group and knockout stages.
 
+## Results of teams who won over 10 iterations of the game.
+- Argentina: 3
+- Senegal: 1
+- Germany: 1
+- Switzerland: 1
+- Belgium: 1
+- Brazil: 1
+- Italy: 1
+- England: 1
+
+> [!NOTE]  
+> This was results from running the program ten times. Based on the Fifa rankings from 25th March, each team is given a value between 1 and 49, top 5 teams etc have 49, last X team have 1, this score plays out in the match winners algorithm.
+> As we can see it has given some surprising results, Senegal were able to win the tournament, alongside Belgium and Switzerland.
+
 ## Features
 
 - **Randomized Game Modes**: The simulator supports a variety of game modes where teams are randomly allocated to groups and the knockout rounds.
