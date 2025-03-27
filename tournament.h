@@ -7,7 +7,7 @@
 class Tournament {
 public:
     Tournament(League& league);
-    void runRoundRobin();  // Run the round-robin tournament
+    void runRoundRobin(bool resetStats);  // Run the round-robin tournament
 
 private:
     League& league;

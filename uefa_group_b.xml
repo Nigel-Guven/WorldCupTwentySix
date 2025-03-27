@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Switzerland</name>
+    <points>45</points>
+  </team>
+  <team>
+    <name>Sweden</name>
+    <points>43</points>
+  </team>
+  <team>
+    <name>Slovenia</name>
+    <points>36</points>
+  </team>
+  <team>
+    <name>Kosovo</name>
+    <points>25</points>
+  </team>
+</teams>

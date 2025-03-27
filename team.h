@@ -28,6 +28,13 @@ public:
     int getDraws() const;
     int getLosses() const;
 
+    void setRankingPoints(int newPoints);
+
+    bool operator==(const Team& other) const {
+        // Define what makes two teams equal; for example, if the names are equal
+        return this->name == other.name;  // Use 'id' or another unique identifier to compare
+    }
+
 private:
     std::string name;
     int rankingPoints;  // Ranking points (based on strength or initial ranking)

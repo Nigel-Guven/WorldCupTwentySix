@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Germany</name>
+    <points>47</points>
+  </team>
+  <team>
+    <name>Slovakia</name>
+    <points>39</points>
+  </team>
+  <team>
+    <name>Northern Ireland</name>
+    <points>32</points>
+  </team>
+  <team>
+    <name>Luxembourg</name>
+    <points>27</points>
+  </team>
+</teams>

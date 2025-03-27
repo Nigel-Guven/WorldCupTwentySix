@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>England</name>
+    <points>49</points>
+  </team>
+  <team>
+    <name>Albania</name>
+    <points>33</points>
+  </team>
+  <team>
+    <name>Latvia</name>
+    <points>15</points>
+  </team>
+  <team>
+    <name>Serbia</name>
+    <points>42</points>
+  </team>
+  <team>
+    <name>Andorra</name>
+    <points>9</points>
+  </team>
+</teams>

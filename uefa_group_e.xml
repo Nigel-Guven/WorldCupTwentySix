@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Spain</name>
+    <points>49</points>
+  </team>
+  <team>
+    <name>Turkiye</name>
+    <points>43</points>
+  </team>
+  <team>
+    <name>Georgia</name>
+    <points>33</points>
+  </team>
+  <team>
+    <name>Bulgaria</name>
+    <points>29</points>
+  </team>
+</teams>

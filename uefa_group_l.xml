@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Czechia</name>
+    <points>39</points>
+  </team>
+  <team>
+    <name>Montenegro</name>
+    <points>32</points>
+  </team>
+  <team>
+    <name>Croatia</name>
+    <points>46</points>
+  </team>
+  <team>
+    <name>Faroe Islands</name>
+    <points>16</points>
+  </team>
+  <team>
+    <name>Gibraltar</name>
+    <points>4</points>
+  </team>
+</teams>

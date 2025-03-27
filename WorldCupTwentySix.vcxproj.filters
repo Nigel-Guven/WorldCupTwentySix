@@ -22,6 +22,9 @@
     <Filter Include="Resource Files\Oceania">
       <UniqueIdentifier>{f1301109-0d54-4fa3-988d-8b2f9b14fdb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Europe">
+      <UniqueIdentifier>{370cbf5b-6de7-4b0f-8c7e-148afe32497e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="random_seed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="jsonParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="world_rankings.json">
@@ -77,6 +83,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="knockoutRound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsonParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,10 +131,44 @@
     <Xml Include="oceania_knockout_round.xml">
       <Filter>Resource Files\Oceania</Filter>
     </Xml>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Text.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    <Xml Include="uefa_group_a.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_b.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_c.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_d.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_e.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_f.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_g.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_h.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_i.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_j.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_k.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_group_l.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="uefa_nations_league_rankings.xml">
+      <Filter>Resource Files\Europe</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

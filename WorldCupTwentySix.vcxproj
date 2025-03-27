@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="jsonParser.cpp" />
     <ClCompile Include="knockoutRound.cpp" />
     <ClCompile Include="league.cpp" />
     <ClCompile Include="match.cpp" />
@@ -149,6 +150,7 @@
     <None Include="world_rankings.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="jsonParser.h" />
     <ClInclude Include="knockoutRound.h" />
     <ClInclude Include="league.h" />
     <ClInclude Include="match.h" />
@@ -170,9 +172,19 @@
     <Xml Include="oceania_knockout_round.xml" />
     <Xml Include="oceania_group_a.xml" />
     <Xml Include="oceania_group_b.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Text.txt" />
+    <Xml Include="uefa_group_a.xml" />
+    <Xml Include="uefa_group_b.xml" />
+    <Xml Include="uefa_group_c.xml" />
+    <Xml Include="uefa_group_d.xml" />
+    <Xml Include="uefa_group_e.xml" />
+    <Xml Include="uefa_group_f.xml" />
+    <Xml Include="uefa_group_g.xml" />
+    <Xml Include="uefa_group_h.xml" />
+    <Xml Include="uefa_group_i.xml" />
+    <Xml Include="uefa_group_j.xml" />
+    <Xml Include="uefa_group_k.xml" />
+    <Xml Include="uefa_group_l.xml" />
+    <Xml Include="uefa_nations_league_rankings.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

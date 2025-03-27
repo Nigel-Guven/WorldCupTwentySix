@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Denmark</name>
+    <points>44</points>
+  </team>
+  <team>
+    <name>Greece</name>
+    <points>40</points>
+  </team>
+  <team>
+    <name>Scotland</name>
+    <points>38</points>
+  </team>
+  <team>
+    <name>Belarus</name>
+    <points>25</points>
+  </team>
+</teams>

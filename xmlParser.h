@@ -9,9 +9,10 @@ class XMLParser {
 public:
     // Constructor declaration (only here in the header)
     XMLParser(const std::string& filename);  // Don't define it here, just declare it
-
+    
     // Method declaration
     std::vector<Team> parseXML();
+    std::vector<Team> parsePlayoffXML();
 
 private:
     // Other private members and methods

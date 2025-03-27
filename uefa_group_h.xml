@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Bosnia and Herzegovina</name>
+    <points>31</points>
+  </team>
+  <team>
+    <name>Romania</name>
+    <points>40</points>
+  </team>
+  <team>
+    <name>Cyprus</name>
+    <points>17</points>
+  </team>
+  <team>
+    <name>Austria</name>
+    <points>44</points>
+  </team>
+  <team>
+    <name>San Marino</name>
+    <points>1</points>
+  </team>
+</teams>

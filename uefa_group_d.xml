@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>France</name>
+    <points>49</points>
+  </team>
+  <team>
+    <name>Ukraine</name>
+    <points>43</points>
+  </team>
+  <team>
+    <name>Iceland</name>
+    <points>32</points>
+  </team>
+  <team>
+    <name>Azerbaijan</name>
+    <points>21</points>
+  </team>
+</teams>

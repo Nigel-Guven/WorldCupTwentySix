@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Portugal</name>
+    <points>48</points>
+  </team>
+  <team>
+    <name>Hungary</name>
+    <points>42</points>
+  </team>
+  <team>
+    <name>Republic of Ireland</name>
+    <points>35</points>
+  </team>
+  <team>
+    <name>Armenia</name>
+    <points>25</points>
+  </team>
+  <team>
+    <name>Russia</name>
+    <points>41</points>
+  </team>
+</teams>

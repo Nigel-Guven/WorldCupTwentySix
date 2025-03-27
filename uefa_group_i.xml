@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Norway</name>
+    <points>39</points>
+  </team>
+  <team>
+    <name>Estonia</name>
+    <points>19</points>
+  </team>
+  <team>
+    <name>Israel</name>
+    <points>31</points>
+  </team>
+  <team>
+    <name>Italy</name>
+    <points>47</points>
+  </team>
+  <team>
+    <name>Moldova</name>
+    <points>13</points>
+  </team>
+</teams>

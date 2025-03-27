@@ -42,6 +42,10 @@ int Team::getRankingPoints() const {
     return rankingPoints;
 }
 
+void Team::setRankingPoints(int newPoints) {
+    rankingPoints = newPoints;
+}
+
 int Team::getLeaguePoints() const {
     return leaguePoints;
 }

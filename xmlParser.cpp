@@ -80,6 +80,37 @@ std::vector<Team> XMLParser::parseXML() {
     return teams;  // Return the list of teams
 }
 
+std::vector<Team> XMLParser::parsePlayoffXML() {
+    ifstream file(filename);  // Open the XML file
+    if (!file) {
+        cerr << "Error: Could not open file: " << filename << endl;
+        return {};  // Return an empty vector in case of an error
+    }
+
+    string line;
+    vector<Team> teams;  // Vector to store the teams
+
+    while (getline(file, line)) {
+        // Trim line before processing (optional, depends on XML format)
+        line = trim(line);
+
+        // Skip empty lines or lines that don't contain relevant data
+        if (line.empty()) continue;
+
+        // Extract team names from <name> tags
+        if (line.find("<name>") != string::npos) {
+            string teamName = extractValue(line, "name");
+            if (!teamName.empty()) {
+                teams.push_back(Team(teamName, 0));  // Add the team to the vector
+            }
+        }
+    }
+
+    file.close();  // Close the file
+    return teams;  // Return the list of teams
+}
+
+
 string XMLParser::trim(const string& str) {
     const auto start = str.find_first_not_of(" \t\r\n");
     if (start == string::npos) return "";  // No non-whitespace characters

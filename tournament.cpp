@@ -5,7 +5,7 @@
 
 Tournament::Tournament(League& league) : league(league) {}
 
-void Tournament::runRoundRobin() {
+void Tournament::runRoundRobin(bool resetStats) {
 
     int numTeams = league.getTeams().size();
 
@@ -41,8 +41,10 @@ void Tournament::runRoundRobin() {
     }
     */
 
-    for (auto& team : league.getTeams()) {
-        team.resetStats();
+    if (resetStats)
+    {
+        for (auto& team : league.getTeams()) {
+            team.resetStats();
+        }
     }
-
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>North Macedonia</name>
+    <points>33</points>
+  </team>
+  <team>
+    <name>Wales</name>
+    <points>42</points>
+  </team>
+  <team>
+    <name>Kazakhstan</name>
+    <points>22</points>
+  </team>
+  <team>
+    <name>Belgium</name>
+    <points>48</points>
+  </team>
+  <team>
+    <name>Liechtenstein</name>
+    <points>2</points>
+  </team>
+</teams>

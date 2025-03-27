@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Poland</name>
+    <points>41</points>
+  </team>
+  <team>
+    <name>Finland</name>
+    <points>32</points>
+  </team>
+  <team>
+    <name>Lithuania</name>
+    <points>14</points>
+  </team>
+  <team>
+    <name>Netherlands</name>
+    <points>48</points>
+  </team>
+  <team>
+    <name>Malta</name>
+    <points>9</points>
+  </team>
+</teams>
