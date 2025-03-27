@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Anguilla</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>Turks and Caicos Islands</name>
+    <points>2</points>
+  </team>
+  <team>
+    <name>US Virgin Islands</name>
+    <points>1</points>
+  </team>
+  <team>
+    <name>British Virgin Islands</name>
+    <points>1</points>
+  </team>
+</teams>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>United States</name>
+    <points>46</points>
+  </team>
+  <team>
+    <name>Mexico</name>
+    <points>45</points>
+  </team>
+  <team>
+    <name>Canada</name>
+    <points>42</points>
+  </team>
+</teams>

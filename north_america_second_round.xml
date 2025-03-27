@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+  <team>
+    <name>Panama</name>
+    <points>41</points>
+  </team>
+  <team>
+    <name>Costa Rica</name>
+    <points>36</points>
+  </team>
+  <team>
+    <name>Jamaica</name>
+    <points>34</points>
+  </team>
+  <team>
+    <name>Honduras</name>
+    <points>31</points>
+  </team>
+  <team>
+    <name>El Salvador</name>
+    <points>29</points>
+  </team>
+  <team>
+    <name>Haiti</name>
+    <points>28</points>
+  </team>
+  <team>
+    <name>Curacao</name>
+    <points>27</points>
+  </team>
+  <team>
+    <name>Trinidad and Tobago</name>
+    <points>24</points>
+  </team>
+  <team>
+    <name>Guatemala</name>
+    <points>24</points>
+  </team>
+  <team>
+    <name>Nicaragua</name>
+    <points>17</points>
+  </team>
+  <team>
+    <name>Antigua and Barbuda</name>
+    <points>11</points>
+  </team>
+  <team>
+    <name>Suriname</name>
+    <points>15</points>
+  </team>
+  <team>
+    <name>Saint Kitts and Nevis</name>
+    <points>14</points>
+  </team>
+  <team>
+    <name>Dominican Republic</name>
+    <points>15</points>
+  </team>
+  <team>
+    <name>Guyana</name>
+    <points>12</points>
+  </team>
+  <team>
+    <name>Puerto Rico</name>
+    <points>11</points>
+  </team>
+  <team>
+    <name>Saint Lucia</name>
+    <points>9</points>
+  </team>
+  <team>
+    <name>Cuba</name>
+    <points>10</points>
+  </team>
+  <team>
+    <name>Bermuda</name>
+    <points>10</points>
+  </team>
+  <team>
+    <name>Saint Vincent and the Grenadines</name>
+    <points>8</points>
+  </team>
+  <team>
+    <name>Grenada</name>
+    <points>8</points>
+  </team>
+  <team>
+    <name>Montserrat</name>
+    <points>7</points>
+  </team>
+  <team>
+    <name>Barbados</name>
+    <points>7</points>
+  </team>
+  <team>
+    <name>Dominica</name>
+    <points>6</points>
+  </team>
+  <team>
+    <name>Belize</name>
+    <points>7</points>
+  </team>
+  <team>
+    <name>Aruba</name>
+    <points>4</points>
+  </team>
+  <team>
+    <name>Cayman Islands</name>
+    <points>4</points>
+  </team>
+  <team>
+    <name>Bahamas</name>
+    <points>2</points>
+  </team>
+</teams>

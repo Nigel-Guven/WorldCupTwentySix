@@ -131,7 +131,6 @@
     <ClCompile Include="knockoutRound.cpp" />
     <ClCompile Include="league.cpp" />
     <ClCompile Include="match.cpp" />
-    <ClCompile Include="random_seed.cpp" />
     <ClCompile Include="simulations.cpp" />
     <ClCompile Include="team.cpp" />
     <ClCompile Include="tournament.cpp" />
@@ -169,6 +168,9 @@
     <Xml Include="africa_group_g.xml" />
     <Xml Include="africa_group_h.xml" />
     <Xml Include="africa_group_i.xml" />
+    <Xml Include="hosts.xml" />
+    <Xml Include="north_america_first_round.xml" />
+    <Xml Include="north_america_second_round.xml" />
     <Xml Include="oceania_knockout_round.xml" />
     <Xml Include="oceania_group_a.xml" />
     <Xml Include="oceania_group_b.xml" />

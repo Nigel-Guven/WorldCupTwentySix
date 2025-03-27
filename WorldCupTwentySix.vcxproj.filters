@@ -25,6 +25,12 @@
     <Filter Include="Resource Files\Europe">
       <UniqueIdentifier>{370cbf5b-6de7-4b0f-8c7e-148afe32497e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\NorthAmerica">
+      <UniqueIdentifier>{764933cb-e83a-48c8-b717-3ae50b71fe1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\WorldCupHosts">
+      <UniqueIdentifier>{d2bb4765-f184-4e97-9819-1c746dfad0f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -49,9 +55,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="knockoutRound.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="random_seed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="jsonParser.cpp">
@@ -169,6 +172,15 @@
     </Xml>
     <Xml Include="uefa_nations_league_rankings.xml">
       <Filter>Resource Files\Europe</Filter>
+    </Xml>
+    <Xml Include="north_america_first_round.xml">
+      <Filter>Resource Files\NorthAmerica</Filter>
+    </Xml>
+    <Xml Include="north_america_second_round.xml">
+      <Filter>Resource Files\NorthAmerica</Filter>
+    </Xml>
+    <Xml Include="hosts.xml">
+      <Filter>Resource Files\WorldCupHosts</Filter>
     </Xml>
   </ItemGroup>
 </Project>

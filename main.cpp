@@ -10,6 +10,7 @@
 #include "jsonParser.h"
 
 League createLeagueFromXMLFile(const std::string& fileName);
+std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amountOfGroups, int groupSize);
 
 int main() {
     
@@ -23,6 +24,66 @@ int main() {
 
     JSONParser parser;
     std::unordered_map<std::string, int> worldRankings = parser.parseJsonFile("world_rankings.json");
+
+    #endif
+
+    #ifndef  North America
+
+    /*
+        North America
+    */
+
+    League northAmericanFirstRoundTeams = createLeagueFromXMLFile("north_america_first_round.xml");
+    League northAmericanSecondRoundTeams = createLeagueFromXMLFile("north_america_second_round.xml");
+    League northAmericanThirdRoundTeams;
+    League worldCupNorthAmericanQualifiedTeams;
+    League northAmericaWorldCupInterConfederationPlayoffTeams;
+
+
+    Tournament northAmericaFirstRoundTournament(northAmericanFirstRoundTeams);
+    northAmericaFirstRoundTournament.runRoundRobin(true);
+
+    northAmericanSecondRoundTeams.addTeam(northAmericanFirstRoundTeams.getTeamByIndex(0));
+    northAmericanSecondRoundTeams.addTeam(northAmericanFirstRoundTeams.getTeamByIndex(1));
+ 
+    std::vector<League> northAmericanSecondRoundGroups = 
+        allocateTeamsIntoGroups(northAmericanSecondRoundTeams.getTeams(), 6, 5);
+
+    for (int i = 0; i < northAmericanSecondRoundGroups.size(); i++)
+    {
+        Tournament northAmericaSecondRoundTournament(northAmericanSecondRoundGroups.at(i));
+        northAmericaSecondRoundTournament.runRoundRobin(true);
+
+        Team groupWinner = northAmericanSecondRoundGroups.at(i).getTeamByIndex(0);
+        Team groupRunnerUp = northAmericanSecondRoundGroups.at(i).getTeamByIndex(1);
+
+        northAmericanThirdRoundTeams.addTeam(groupWinner);
+        northAmericanThirdRoundTeams.addTeam(groupRunnerUp);
+    }
+
+    std::vector<League> northAmericanThirdRoundGroups =
+        allocateTeamsIntoGroups(northAmericanThirdRoundTeams.getTeams(), 3, 4);
+
+    for (int i = 0; i < northAmericanThirdRoundGroups.size(); i++)
+    {
+        Tournament northAmericaThirdRoundTournament(northAmericanThirdRoundGroups.at(i));
+        northAmericaThirdRoundTournament.runRoundRobin(false);
+
+        worldCupNorthAmericanQualifiedTeams.addTeam(northAmericanThirdRoundGroups.at(i).getTeamByIndex(0));
+        northAmericaWorldCupInterConfederationPlayoffTeams.addTeam(northAmericanThirdRoundGroups.at(i).getTeamByIndex(1));
+        northAmericaWorldCupInterConfederationPlayoffTeams.sortTeams();
+
+        if (northAmericaWorldCupInterConfederationPlayoffTeams.getTeams().size() == 3)
+        {
+            northAmericaWorldCupInterConfederationPlayoffTeams.removeTeams(1);
+        }
+    }
+
+
+
+    /*
+        ---------------------------------
+    */
 
     #endif
 
@@ -248,3 +309,57 @@ League createLeagueFromXMLFile(const std::string& fileName) {
     return league;
 }
 
+std::vector<League> allocateTeamsIntoGroups(std::vector<Team>& teams, int amountOfGroups, int groupSize) {
+
+    std::vector<League> listOfLeagues;
+
+    if (teams.size() < amountOfGroups * groupSize) {
+        std::cout << "Not enough teams to fill the groups!" << std::endl;
+        return listOfLeagues;
+    }
+
+    std::srand(static_cast<unsigned int>(std::time(0)));
+
+    // Vector to store the groups
+    std::vector<std::vector<Team>> groups(amountOfGroups);
+
+    // Step 1: Shuffle each group of n teams separately
+    std::vector<std::vector<Team>> shuffledBlocks;
+
+    for (size_t i = 0; i < teams.size(); i += groupSize) {
+        // Create a block of n teams
+        std::vector<Team> block(teams.begin() + i, teams.begin() + std::min(i + groupSize, teams.size()));
+
+        // Shuffle the block
+        std::random_shuffle(block.begin(), block.end());
+
+        // Add shuffled block to shuffledBlocks
+        shuffledBlocks.push_back(block);
+    }
+
+    // Step 2: Allocate the shuffled blocks into the groups
+    int groupIndex = 0;
+    for (auto& block : shuffledBlocks) {
+        for (auto& team : block) {
+            groups[groupIndex % amountOfGroups].push_back(team);
+            groupIndex++;
+        }
+    }
+
+    // Step 3: Print the groups
+    for (int i = 0; i < amountOfGroups; ++i) {
+        
+        League league;
+        
+        std::cout << "Group " << (i + 1) << ": ";
+        for (const Team& team : groups[i]) {
+            league.addTeam(team);
+            std::cout << team.getName() << " ";
+        }
+        std::cout << std::endl;
+
+        listOfLeagues.push_back(league);
+    }
+
+    return listOfLeagues;
+}

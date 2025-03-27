@@ -37,3 +37,14 @@ Team& League::getTeamByIndex(int index) {
     }
     throw std::out_of_range("Index is out of range");
 }
+
+// New removeTeams function
+void League::removeTeams(int n) {
+    // Ensure we remove no more than the number of teams available
+    if (n > teams.size()) {
+        n = teams.size(); // Adjust n if it's larger than the available teams
+    }
+
+    // Remove the last 'n' teams
+    teams.erase(teams.end() - n, teams.end());
+}
